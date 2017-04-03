@@ -25,13 +25,13 @@ def knn_with_cross_fold_validation(data, classes, num_iterations=20):
     print('The best k with {0} iterations was {1} with a success rate of {2}%'
           .format(num_iterations, optimal_k, max(mean_cv_errors) * 100))
 
-    inverse_errors = [1 - x for x in mean_cv_errors]
-    plotter(possible_ks,
-            inverse_errors,
-            'Number of Neighbors K',
-            'Misclassification Rate',
-            'KNN with Cross Fold Validation (Best k={0})'.format(possible_ks[index]),
-            num_iterations)
+    # inverse_errors = [1 - x for x in mean_cv_errors]
+    # plotter(possible_ks,
+    #         inverse_errors,
+    #         'Number of Neighbors K',
+    #         'Misclassification Rate',
+    #         'KNN with Cross Fold Validation (Best k={0})'.format(possible_ks[index]),
+    #         num_iterations)
 
     return optimal_k
 
