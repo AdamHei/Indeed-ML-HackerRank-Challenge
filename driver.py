@@ -23,7 +23,7 @@ def driver():
     for tag in classes:
         print("Starting on tag {0}".format(tag))
 
-        num_iters = 100
+        num_iters = 20
 
         best_k = knn_with_cross_fold_validation(data, classes[tag], num_iterations=num_iters)
 
