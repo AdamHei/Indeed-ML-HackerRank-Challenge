@@ -10,7 +10,8 @@ def knn_with_cross_fold_validation(data, classes, num_iterations=20):
 
     for i in range(0, num_iterations):
         for k in possible_ks:
-            print("Trying k={0}".format(k))
+            if k % 11 == 0:
+                print("k={0}".format(k))
             knn = KNeighborsClassifier(n_neighbors=k)
             # Took out scoring='accuracy'
             scores = cross_val_score(knn, data, classes, cv=10)
