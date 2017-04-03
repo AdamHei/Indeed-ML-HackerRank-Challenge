@@ -26,7 +26,7 @@ def get_data():
             if tag != '':
                 classes[tag][i] = 1
 
-    return fitted.toarray(), classes
+    return fitted, classes
 
 # scores = []
 # classifier = QuadraticDiscriminantAnalysis()
