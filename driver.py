@@ -13,8 +13,7 @@ def driver():
     data, classes = get_data()
     data_dense = data.toarray()
 
-    # classifiers = [svm.SVC(), RandomForestClassifier(n_estimators=10)]
-    picky_classifiers = [QuadraticDiscriminantAnalysis(), LinearDiscriminantAnalysis(), GaussianNB()]
+    picky_classifiers = ["QDA", "LDA", "Naive Bayes"]
 
     classifier_map = {"SVM": svm.SVC(), "RandomForest": RandomForestClassifier(n_estimators=10),
                       "QDA": QuadraticDiscriminantAnalysis(), "LDA": LinearDiscriminantAnalysis(),
@@ -37,7 +36,7 @@ def driver():
             best_classifier = "KNN"
 
         for classifier in classifier_map:
-            score = runner(data_dense if classifier_map[classifier] in picky_classifiers else data,
+            score = runner(data_dense if classifier in picky_classifiers else data,
                            classes[tag], classifier_map[classifier], num_iterations=num_iters)
 
             if score > max_score:
@@ -46,7 +45,7 @@ def driver():
 
                 # print("Accuracy for tag {0} with {1} iterations was {2}%".format(tag, num_iters, score * 100))
 
-        print("Best classifier for tag {0} was {1} with accuracy {2}%".format(tag, best_classifier, max_score * 100))
+        print("\nBest classifier for tag {0} was {1} with accuracy {2}%\n".format(tag, best_classifier, max_score * 100))
 
 
 if __name__ == '__main__':
